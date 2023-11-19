@@ -1,9 +1,4 @@
-# pip install PyPDF2
-import re
 import PyPDF2
-
-# O código considera que a cada ":" surge um novo dialogo.
-
 
 def extrair_dialogos(script):
     dialogos = []
@@ -15,14 +10,13 @@ def extrair_dialogos(script):
             if dialogo_atual['falas']:
                 dialogos.append(dialogo_atual)
                 dialogo_atual = {'falas': []}
-        dialogo_atual['falas'].append(linha + ' ')
+            dialogo_atual['falas'].append(linha + ' ')
 
     if dialogo_atual['falas']:
         dialogos.append(dialogo_atual)
 
     return dialogos
 
-# Caminho do arquivo
 caminho_arquivo = '/content/pdfcoffee.com_shrek-roteiro-4-pdf-free.pdf'
 
 with open(caminho_arquivo, 'rb') as arquivo:  # 'rb' para abrir em modo binário
@@ -34,7 +28,8 @@ with open(caminho_arquivo, 'rb') as arquivo:  # 'rb' para abrir em modo binário
         pagina = leitor_pdf.pages[pagina_num]
         script += pagina.extract_text()
 
-lista_dialogos = extrair_dialogos(script)
-
-for i, dialogo in enumerate(lista_dialogos, start=1):
-    print('Diálogo {}: {}'.format(i, "".join(dialogo["falas"])))
+# Adicionando aspas no início e no final de cada diálogo, com vírgula após as aspas
+total_dialogos = len(extrair_dialogos(script))
+for i, dialogo in enumerate(extrair_dialogos(script), start=1):
+    falas_formatadas = ' '.join(dialogo["falas"]).strip()
+    print('"{}",'.format( falas_formatadas))
