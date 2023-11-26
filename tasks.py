@@ -52,4 +52,3 @@ def treinamento_donkey(epochs, lr=1e-5):
 
     return f"Treinamento concluído. Modelo salvo em {output_dir}."
 
-treinamento_donkey(10, lr=1e-5)
