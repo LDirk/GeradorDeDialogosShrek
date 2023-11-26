@@ -3,7 +3,7 @@
   A arquitetura utilizada no modelo foi o GPT2. 
 
 # O que este modelo faz?
-  O modelo foi treinado para imitar o estilo do personagem burro do filme sherek a partir de prompts fornecidos. 
+  O modelo foi treinado para imitar o estilo do personagem burro do filme sherek a partir de prompts fornecidos
 
 
 
