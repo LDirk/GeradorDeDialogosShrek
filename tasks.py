@@ -52,3 +52,26 @@ def treinamento_donkey(epochs, lr=1e-5):
 
     return f"Treinamento concluído. Modelo salvo em {output_dir}."
 
+def prompt_donkey(prompt,model_path):
+
+    model = GPT2LMHeadModel.from_pretrained(model_path)
+    tokenizer = GPT2Tokenizer.from_pretrained(model_path)
+
+    # Tokenizar o texto de entrada
+    input_ids = tokenizer.encode(prompt, return_tensors="pt")
+
+    # Gerar texto
+    output = model.generate(
+    input_ids,
+    max_length=50,
+    num_beams=5,
+    no_repeat_ngram_size=2,
+    top_p=0.95,
+    do_sample=True,  # Alterado para True
+    temperature = 0.5,
+    pad_token_id=model.config.eos_token_id,  # Definindo o token de preenchimento para o token de fim de sequência (eos_token_id)
+    )
+
+    # Decodificar o texto gerado
+    generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+    return(generated_text)
