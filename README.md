@@ -7,3 +7,4 @@
 
 
 
+![image](https://github.com/LDirk/GeradorDeDialogosShrek/assets/47995676/4925a186-a32d-483b-9dd1-a8f06aa6bb73)
