@@ -2,6 +2,9 @@ import torch
 from utils import falas_burro
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import os
+from nltk.metrics import jaccard_distance
+from nltk.translate.bleu_score import sentence_bleu
+from sacremoses import MosesDetokenizer
 
 def donkey():
     dialogs = falas_burro()
@@ -52,7 +55,10 @@ def treinamento_donkey(epochs, lr=1e-5):
 
     return f"Treinamento concluído. Modelo salvo em {output_dir}."
 
-def prompt_donkey(prompt, model_path, max_length=50, num_beams=5, no_repeat_ngram_size=2, top_p=0.95, do_sample=True, temperature=0.5):
+# model_path é o caminho do modelo treinado, exemplo: model_path = 'gpt2_finetuned_model_1000'
+# prompt entrada de texto, exemplo: prompt ="what is your nome ?"
+
+def prompt_donkey(prompt, model_path, max_length=100, num_beams=5, no_repeat_ngram_size=2, top_p=0.90, do_sample=True, temperature=0.2):
 
     model = GPT2LMHeadModel.from_pretrained(model_path)
     tokenizer = GPT2Tokenizer.from_pretrained(model_path)
@@ -71,7 +77,22 @@ def prompt_donkey(prompt, model_path, max_length=50, num_beams=5, no_repeat_ngra
         pad_token_id=model.config.eos_token_id,
     )
 
-    print("Indo decofificar")
     # Decodificar o texto gerado
     generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
     return(print(generated_text))
+
+# Função para calcular a similaridade de Jaccard
+def jaccard_similarity(str1, str2):
+    a = set(str1.split())
+    b = set(str2.split())
+    return 1 - jaccard_distance(a, b)
+
+# Função para calcular o BLEU Score
+def calculate_bleu(reference, candidate):
+    # Convertendo as strings em listas de tokens
+    reference_tokens = [reference.split()]
+    candidate_tokens = candidate.split()
+
+    # Calculando o BLEU Score
+    bleu_score = sentence_bleu(reference_tokens, candidate_tokens)
+    return bleu_score
