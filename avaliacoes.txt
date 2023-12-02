@@ -1,0 +1,30 @@
+
+# prompt (sherek): Now, why don't you go celebrate your freedom with your own friends?
+# Original: But, uh, I don't have any friends.
+# Saida: I'm not sure if you've heard of the Freedom to Be Yourself movement, but it's a movement that's been around for a while now.
+# Similaridade de Jaccard: 0.0
+# BLEU Score: 0
+
+# prompt : Why are you following me?
+# Original: I'll tell you why. (singing) 'Cause I'm all alone, There's no one here beside me, My problems have all gone, There's no one to deride me, But you gotta have faith
+# Saida: I'm not a journalist. I don't have any money. Im a writer. And I ve been writing for a long time. It s not like I have a lot of money
+# Similaridade de Jaccard: 0.0434
+# BLEU Score: 1.016e-231
+
+# prompt : Stop singing! It's no wonder you don't have any friends
+# Original: Wow. Only a true friend would be that cruelly honest.
+# Saida: I m not going to be able to sing anymore. I'm going home. It'll be fine. 
+# Similaridade de Jaccard: 0.045
+# BLEU Score: 9.10 e-232
+
+# prompt : Stop singing! It's no wonder you don't have any friends
+# Original: Wow. Only a true friend would be that cruelly honest.
+# Saida: I m not going to be able to sing anymore. I'm going home. It'll be fine. 
+# Similaridade de Jaccard: 0.045
+# BLEU Score: 9.10 e-232
+
+# prompt : Listen, little donkey. Take a look at me. What am I?
+# Original: Uh ...really tall?
+# Saida: I'm a little bit of a donkey, but I'm not a big one ... (I don't know what to say.)
+# Similaridade de Jaccard: 0
+# BLEU Score: 0
